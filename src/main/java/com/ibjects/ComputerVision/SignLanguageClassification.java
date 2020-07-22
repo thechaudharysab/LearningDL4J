@@ -29,7 +29,7 @@ public class SignLanguageClassification {
     private static int epochs = 10; //120
     private static int batchSize = 32;
     private static int seed = 123;
-    private static int numClasses = 36;
+    private static int numClasses = 10;
 
     private static int height = 400;
     private static int width = 400;
@@ -41,7 +41,7 @@ public class SignLanguageClassification {
         BasicConfigurator.configure();
 
         String dataPath = "/Users/chaudhrytalha/Documents/LearningDL4J/src/main/resources";
-        File zipFile = new File(dataPath, "asl_dataset.zip");
+        File zipFile = new File(dataPath, "asl_dataset_digits.zip");
         ArchiveUtils.unzipFileTo(zipFile.getAbsolutePath(), dataPath);
 
     }

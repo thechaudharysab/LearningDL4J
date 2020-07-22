@@ -24,7 +24,7 @@ public class SignLanguageDataIteration {
     private static final int height = 400;
     private static final int width = 400;
     private static final int channels = 3;
-    private static final int numClasses = 36;
+    private static final int numClasses = 10;
 
     //Images are of format given by allowedExtension
     private static final String [] allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
@@ -94,7 +94,7 @@ public class SignLanguageDataIteration {
     private static void loadAndUnzipFile() throws IOException {
 
         String outputPath = "src/main/resources"; //Right click on resources -> copy -> Absolute path
-        File zipFile = new ClassPathResource("asl_dataset.zip").getFile();
+        File zipFile = new ClassPathResource("asl_dataset_digits.zip").getFile();
         ArchiveUtils.unzipFileTo(zipFile.getAbsolutePath(), outputPath);
     }
 
