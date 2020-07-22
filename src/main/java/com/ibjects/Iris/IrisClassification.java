@@ -1,4 +1,4 @@
-package com.ibjects.FirstProject;
+package com.ibjects.Iris;
 
 import org.apache.log4j.BasicConfigurator;
 import org.datavec.api.records.reader.RecordReader;
