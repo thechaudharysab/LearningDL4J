@@ -29,6 +29,8 @@ public class SignLanguageDataIteration {
     //Images are of format given by allowedExtension
     private static final String [] allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
 
+    private static final String DATA_URL = "";
+
     //Random number generator
     private static final Random rng  = new Random(123);
 
