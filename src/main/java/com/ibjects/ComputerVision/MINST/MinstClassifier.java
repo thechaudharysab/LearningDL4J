@@ -20,6 +20,7 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.learning.config.Nesterovs;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
@@ -56,7 +57,7 @@ public class MinstClassifier {
         int rngSeed = 123;
         int nEpochs = 2;
 
-        System.out.printf("Build Model...");
+        System.out.print("Build Model...");
         MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
                 .seed(rngSeed)
                 .updater(new Nesterovs(0.006, 0.9))
@@ -74,12 +75,12 @@ public class MinstClassifier {
         //Print score every 500 interaction
         model.setListeners(new ScoreIterationListener(500));
 
-        System.out.printf("Train Model...");
+        System.out.print("Train Model...");
         model.fit(dsi);
 
         //Evaluation
         DataSetIterator testDsi = getDataSetIterator(RESOURCES_FOLDER_PATH+"/testing", N_SAMPLES_TESTING);
-        System.out.printf("Evaluating Model...");
+        System.out.print("Evaluating Model...");
         Evaluation eval = model.evaluate(testDsi);
         System.out.print(eval.stats());
 

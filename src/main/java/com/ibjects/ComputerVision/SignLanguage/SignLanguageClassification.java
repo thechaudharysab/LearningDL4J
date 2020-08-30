@@ -1,6 +1,7 @@
 package com.ibjects.ComputerVision.SignLanguage;
 
 import org.apache.log4j.BasicConfigurator;
+import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.conf.ConvolutionMode;
 import org.deeplearning4j.nn.conf.GradientNormalization;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
@@ -9,6 +10,7 @@ import org.deeplearning4j.nn.conf.inputs.InputType;
 import org.deeplearning4j.nn.conf.layers.*;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
+import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.learning.config.Adam;
@@ -119,8 +121,15 @@ public class SignLanguageClassification {
 
         MultiLayerNetwork model = new MultiLayerNetwork(configuration);
         model.init();
+        //Print score every 500 interaction
+        model.setListeners(new ScoreIterationListener(500));
 
-        System.out.println(model.summary());
+        System.out.printf("Train Model...");
+        model.fit(trainIter);
+
+        System.out.printf("Evaluating Model...");
+        Evaluation eval = model.evaluate(testIter);
+        System.out.print(eval.stats());
 
     }
 }
